@@ -1,18 +1,52 @@
-<!-- <p>
+<!-- Step 1: List the hero when it is represented by a string
+<p>
   {{hero}}
 </p> -->
 
-<h2>My Heroes</h2>
-<ul>
-  <li *ngFor="let hero of heroes">
-    <span class="badge">{{hero.id}}</span>{{hero.name}}
-  </li>
-</ul>
-<h2>{{hero.name | uppercase}} Details</h2>
+<!-- Step 2: List the hero when it is represented by an object
+<h2>{{ hero.name }} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div> -->
+
+<!-- Step 3: Make the hero's name appear in uppercase and create an input text box
+     with a two-way binding between the text box and hero.name  -->
+<!-- <h2>{{hero.name | uppercase}} Details</h2>
 <div>
   <label>name:
     <input [(ngModel)]="hero.name" placeholder="name">
   </label>
+</div> -->
+
+<!-- Step 4: Add a repeater (*ngFor) to list each hero in heroes
+<h2>My Heroes</h2>
+<ul>
+  <li *ngFor="let hero of heroes">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul> -->
+
+<!-- Step 5: Add a click-event binding to a new <li> element -->
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <!-- Use *ngFor to display a list -->
+  <!-- Toggle css style class with class binding -->
+  <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<!-- Use *ngIf to conditionally include or exclude a block of HTML -->
+<div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
+
 </div>
-<!-- <div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div> -->
+
