@@ -1,18 +1,44 @@
-<!-- <p>
+<!-- Step 1: List the hero when it is represented by a string
+<p>
   {{hero}}
 </p> -->
 
-<h2>My Heroes</h2>
-<ul>
-  <li *ngFor="let hero of heroes">
-    <span class="badge">{{hero.id}}</span>{{hero.name}}
-  </li>
-</ul>
-<h2>{{hero.name | uppercase}} Details</h2>
+<!-- Step 2: List the hero when it is represented by an object
+<h2>{{ hero.name }} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div> -->
+
+<!-- Step 3: Make the hero's name appear in uppercase and create an input text box
+     with a two-way binding between the text box and hero.name  -->
+<!-- <h2>{{hero.name | uppercase}} Details</h2>
 <div>
   <label>name:
     <input [(ngModel)]="hero.name" placeholder="name">
   </label>
-</div>
-<!-- <div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div> -->
+</div> -->
+
+<!-- Step 4: Add a repeater (*ngFor) to list each hero in heroes
+<h2>My Heroes</h2>
+<ul>
+  <li *ngFor="let hero of heroes">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul> -->
+
+<!-- Step 5: Add a click-event binding to a new <li> element -->
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <!-- Use *ngFor to display a list -->
+  <!-- Toggle css style class with class binding -->
+  <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<!-- [hero]="selectedHero" binds the HeroesComponent.selectedHero to the
+     element's hero property.  This is an Angular property binding.
+     It's a one way data binding from the selectedHero property of the HeroesComponent to the hero property of the target element, which maps to the hero property of the HeroDetailComponent. -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
