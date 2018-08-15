@@ -20,7 +20,7 @@ export class HeroesComponent implements OnInit {
   // };
 
   // Step 5: change the above definition of hero
-  selectedHero: Hero;
+  // selectedHero: Hero;
 
   // Inject the HeroService
   // The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
@@ -30,9 +30,10 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  // remnant from Step 5:
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  // }
   
   getHeroes(): void {
     // this.heroService.getHeroes() is an Observable

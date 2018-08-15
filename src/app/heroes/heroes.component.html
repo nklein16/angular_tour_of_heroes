@@ -27,18 +27,28 @@
 
 <!-- Step 5: Add a click-event binding to a new <li> element -->
 <h2>My Heroes</h2>
-<ul class="heroes">
+<!-- <ul class="heroes"> -->
   <!-- Use *ngFor to display a list -->
   <!-- Toggle css style class with class binding -->
-  <li *ngFor="let hero of heroes"
+  <!-- <li *ngFor="let hero of heroes"
       [class.selected]="hero === selectedHero"
       (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
-</ul>
+</ul> -->
 
 <!-- [hero]="selectedHero" binds the HeroesComponent.selectedHero to the
      element's hero property.  This is an Angular property binding.
      It's a one way data binding from the selectedHero property of the HeroesComponent to the hero property of the target element, which maps to the hero property of the HeroDetailComponent. -->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+
+<!-- Step 6: Routing 
+     Once again, replace what you have done above with the following -->
+<ul>
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+  </li>
+</ul>
 
